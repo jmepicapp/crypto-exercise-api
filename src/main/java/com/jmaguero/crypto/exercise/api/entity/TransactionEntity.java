@@ -3,28 +3,33 @@ package com.jmaguero.crypto.exercise.api.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Currency;
 
 @Getter
-@Setter
 @Entity
 @Table(name = "transactions")
 public class TransactionEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @EmbeddedId
-    private TransactionId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_from_id")
+    private @Setter AccountEntity accountFrom;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_to_id")
+    private @Setter AccountEntity accountTo;
 
     @Column(name = "currency")
-    private Currency currency;
+    private @Setter Currency currency;
 
     @Column(name = "balance")
-    private Double balance;
+    private @Setter Double balance;
 
 }
