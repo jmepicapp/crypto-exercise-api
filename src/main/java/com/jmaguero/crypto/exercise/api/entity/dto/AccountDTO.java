@@ -7,19 +7,18 @@ import javax.validation.constraints.NotNull;
 import java.util.Currency;
 
 @Getter
-@Setter
 public class AccountDTO {
 
     @NotNull
     private Integer id;
 
-    private String name;
+    private @Setter String name;
 
     @NotNull
-    private Currency currency;
+    private @Setter Currency currency;
 
     @NotNull
-    private Double balance;
+    private @Setter Double balance;
 
     private boolean treasury;
 

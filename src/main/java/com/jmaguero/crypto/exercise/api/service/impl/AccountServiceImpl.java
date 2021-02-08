@@ -27,7 +27,7 @@ public class AccountServiceImpl implements AccountService {
         if (optionalAccount.isPresent()) {
             return ModelMapperUtil.map(optionalAccount, AccountDTO.class);
         }
-        throw new AccountNotFoundException(CommonMessage.AccountNotFoundMessage);
+        throw new AccountNotFoundException(CommonMessage.AccountNotFound);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
     public AccountDTO update(AccountDTO accountDTO, Integer id) {
         Optional<AccountEntity> optionalAccount = this.accountRepository.findById(id);
         if (optionalAccount.isEmpty()) {
-            throw new AccountNotFoundException(CommonMessage.AccountNotFoundMessage);
+            throw new AccountNotFoundException(CommonMessage.AccountNotFound);
         } else {
             AccountEntity accountEntity = optionalAccount.get();
             accountEntity.setBalance(accountDTO.getBalance());

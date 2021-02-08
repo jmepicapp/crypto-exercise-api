@@ -4,7 +4,6 @@ import com.jmaguero.crypto.exercise.api.entity.AccountEntity;
 import com.jmaguero.crypto.exercise.api.entity.dto.AccountDTO;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface AccountService {
 
     AccountDTO find (Integer id);
