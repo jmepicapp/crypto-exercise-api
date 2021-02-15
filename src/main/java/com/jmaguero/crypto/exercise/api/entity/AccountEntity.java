@@ -27,15 +27,17 @@ public class AccountEntity implements Serializable {
     private @Setter String name;
 
     @Column(name = "currency")
-    private @Setter Currency currency;
+    private @Setter String currency;
 
     @Column(name = "balance")
     private @Setter Double balance;
 
     @Column(name = "treasury")
-    private boolean treasury;
+    private @Setter boolean treasury;
 
-    public AccountEntity(String name, Currency currency, Double balance, boolean treasury) {
+    public AccountEntity() {}
+
+    public AccountEntity(String name, String currency, Double balance, boolean treasury) {
         this.name = name;
         this.currency = currency;
         this.balance = balance;
