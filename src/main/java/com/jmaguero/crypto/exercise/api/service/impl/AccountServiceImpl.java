@@ -22,10 +22,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional(readOnly = true)
-    public AccountDTO find(Integer id) throws AccountNotFoundException{
+    public AccountDTO find(Integer id) throws AccountNotFoundException {
         Optional<AccountEntity> optionalAccount = this.accountRepository.findById(id);
         if (optionalAccount.isPresent()) {
-            return ModelMapperUtil.map(optionalAccount, AccountDTO.class);
+            return ModelMapperUtil.map(optionalAccount.get(), AccountDTO.class);
         }
         throw new AccountNotFoundException(CommonMessage.AccountNotFound);
     }
@@ -37,7 +37,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountDTO update(AccountDTO accountDTO, Integer id) {
+    public AccountDTO update(AccountDTO accountDTO, Integer id) throws AccountNotFoundException {
         Optional<AccountEntity> optionalAccount = this.accountRepository.findById(id);
         if (optionalAccount.isEmpty()) {
             throw new AccountNotFoundException(CommonMessage.AccountNotFound);

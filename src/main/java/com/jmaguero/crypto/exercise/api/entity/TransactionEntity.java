@@ -27,7 +27,7 @@ public class TransactionEntity implements Serializable {
     private @Setter AccountEntity accountTo;
 
     @Column(name = "currency")
-    private @Setter Currency currency;
+    private @Setter String currency;
 
     @Column(name = "balance")
     private @Setter Double balance;
